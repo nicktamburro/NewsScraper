@@ -27,6 +27,12 @@ db.once("open", function(){
   console.log("Mongoose connection successful.");
 })
 
+/*if (process.env.MONGODB_URI){
+  mongoose.connect(process.env.MONGODB_URI);
+}else{
+  mongoose.connect(db);
+};*/
+
 //var databaseUrl = "scraper";
 //var collections = ["scrapedData"];
 
