@@ -49,6 +49,7 @@ request("http://pitchfork.com/reviews/albums/", function(error, response, html) 
      var result = {};
     // Save the text of the element in a "title" variable
     result.coverArt = $(element).children().children().children().children().attr("src");
+    result.link = $(element).children().find("href");
     result.artist = $(element).children().children().children().find("li").text();
     result.title = $(element).children().children().find("h2.title").text();
     // In the currently selected element, look at its child elements (i.e., its a-tags),
@@ -58,10 +59,12 @@ request("http://pitchfork.com/reviews/albums/", function(error, response, html) 
     console.log(result.coverArt);
     console.log(result.artist);
     console.log(result.title);
+    console.log(result.link);
 
     var coverArt = result.coverArt;
     var artist = result.artist;
     var title = result.title;
+    var link = result.link;
 
     var entry = new Article(result);
 
