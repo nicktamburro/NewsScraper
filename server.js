@@ -19,13 +19,28 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 
-//what is this?
-mongoose.connect("mongodb://localhost/");
+mongoose.connect("mongodb://localhost:27017");
 var db = mongoose.connection;
-
-db.once("open", function(){
+db.on("error", function(err) {
+  console.log("Mongoose Error: ", err);
+});
+db.once("open", function() {
   console.log("Mongoose connection successful.");
-})
+});
+//what is this?
+/*mongoose.connect("mongodb://localhost:27017");
+//var db = process.env.MONGODB_URI 
+
+mongoose.connect(db, function(error){
+  if (error){
+    console.log(error);
+  }
+  else {}
+    console.log("mongoose connection is succesful");
+  }),*/
+
+
+
 
 /*if (process.env.MONGODB_URI){
   mongoose.connect(process.env.MONGODB_URI);
